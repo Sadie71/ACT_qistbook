@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #F8FAFC;
+  --surface: #FFFFFF;
+  --surface-2: #F1F5F9;
+  --border: #E2E8F0;
+  --text: #0F172A;
+  --muted: #64748B;
+  --primary: #2563EB;
+  --primary-dark: #1D4ED8;
+  --primary-soft: #EFF6FF;
+  --primary-foreground: #FFFFFF;
+  --accent: #3B82F6;
+  --danger: #E11D48;
+  --udhaar: #E11D48;
+  --udhaar-soft: #FFE4E6;
+  --wasooli: #10B981;
+  --wasooli-soft: #DCFCE7;
+  --warning: #F59E0B;
+}
+
+.dark {
+  --bg: #0B0F19;
+  --surface: #111827;
+  --surface-2: #1E293B;
+  --border: #1E293B;
+  --text: #F8FAFC;
+  --muted: #94A3B8;
+  --primary: #3B82F6;
+  --primary-dark: #2563EB;
+  --primary-soft: rgba(59, 130, 246, 0.16);
+  --primary-foreground: #FFFFFF;
+  --accent: #60A5FA;
+  --danger: #FB7185;
+  --udhaar: #FB7185;
+  --udhaar-soft: rgba(251, 113, 133, 0.16);
+  --wasooli: #34D399;
+  --wasooli-soft: rgba(52, 211, 153, 0.16);
+  --warning: #F59E0B;
+}
+
+@layer base {
+  html {
+    overflow-x: hidden;
+    max-width: 100vw;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-inter), sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 100vh;
+    min-width: 320px;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-poppins), sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  /* Responsive media rules */
+  img, svg, video, canvas {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Ensure mobile form inputs are at least 16px to prevent iOS Safari auto-zooming */
+@media (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="date"],
+  input[type="tel"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Mobile responsiveness rules (viewport width <= 480px and <= 768px) */
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .header-tagline {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 150px !important;
+  }
+  .card {
+    padding: 16px !important;
+  }
+  .action-btn {
+    width: 100% !important;
+    min-height: 44px !important;
+  }
+  .action-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Background blurred ambient circles */
+.bg-ambient-primary {
+  position: fixed;
+  top: -12rem;
+  right: -12rem;
+  width: 36rem;
+  height: 36rem;
+  border-radius: 9999px;
+  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+  opacity: 0.12;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: -10;
+}
+
+.bg-ambient-amber {
+  position: fixed;
+  bottom: -10rem;
+  left: -10rem;
+  width: 30rem;
+  height: 30rem;
+  border-radius: 9999px;
+  background: radial-gradient(circle, var(--warning) 0%, transparent 70%);
+  opacity: 0.06;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: -10;
+}
+
+/* Tabular numbers for all monetary values */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Micro-animations */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-fade-up {
+    animation: fadeUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .card-hover {
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .card-hover:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Print Styling for Customer Ledger Statement */
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+  .no-print, header, aside, nav, button, .bg-ambient-primary, .bg-ambient-amber {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .print-card {
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    background: #FFFFFF !important;
+  }
+}

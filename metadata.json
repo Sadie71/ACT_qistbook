@@ -1,0 +1,6 @@
+{
+  "name": "QistBook",
+  "description": "Credit ledger app for small shopkeepers with AI-powered insights, WhatsApp reminders, and dual Roman Urdu/English support.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
